@@ -1,0 +1,56 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.EventSystems;
+
+public class IconBehavior : MonoBehaviour , IPointerClickHandler 
+{
+    
+    static IconBehavior currentSelection;
+
+    [SerializeField]
+    private Image selectionIcon;
+
+    private TextMeshProUGUI iconTitle;
+    private TextMeshProUGUI iconDescription;
+
+
+    //Initialize Icon Title & Description
+    public void Initialize(TextMeshProUGUI title, TextMeshProUGUI description)
+    {
+        iconTitle = title;
+        iconDescription = description;
+        if (currentSelection == null)
+        {
+            OnClick();
+        }
+    }
+
+    //Icon Click Behavior
+    public void OnClick(){
+        if (currentSelection != null)
+        {
+            currentSelection.DeactivateIcon();
+        }
+
+        selectionIcon.enabled = true;
+        currentSelection = this;
+
+        iconTitle.text = GetComponent<IconDataPopulator>().iconAsset.IconName.ToString();
+        iconDescription.text = GetComponent<IconDataPopulator>().iconAsset.IconDescription.ToString();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        OnClick();
+    }
+
+    //Deactivate selectionIcon
+    public void DeactivateIcon()
+    {
+        selectionIcon.enabled = false;
+    }
+}
+
