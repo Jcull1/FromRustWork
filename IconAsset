@@ -1,0 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+[CreateAssetMenu(menuName = "IconAsset")]
+public class IconAsset : ScriptableObject
+{
+    //Info for Icons
+    [Header("Info")]
+    public string IconName;
+    public Sprite IconImage;
+    [TextArea]
+    public string IconDescription;
+}
