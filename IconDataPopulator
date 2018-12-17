@@ -1,0 +1,23 @@
+using UnityEngine;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
+using TMPro;
+
+public class IconDataPopulator : MonoBehaviour {
+
+    public IconAsset iconAsset;
+
+    [Header("References")]
+    [SerializeField]
+    Image sourceIcon;
+ 
+    public void ReadIconFromAsset(){
+        //Add Image
+        if (sourceIcon != null)
+        {
+            sourceIcon.sprite = iconAsset.IconImage;
+        }
+    }
+}
